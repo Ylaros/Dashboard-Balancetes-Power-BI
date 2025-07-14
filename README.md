@@ -10,8 +10,8 @@ Facilitar a visualização e análise de balancetes contábeis, permitindo insig
 
 - **Power BI Desktop**
 - **Power Query (M)**
-- **DAX**
-- **Conexão ODBC com banco Domínio**
+- **DAX (medidas, colunas e tabelas calculadas)**
+- **Conexão ODBC com sistema Domínio**
 - **Modelagem contábil estruturada**
 
 ## 📊 Funcionalidades do Dashboard
@@ -23,52 +23,63 @@ Facilitar a visualização e análise de balancetes contábeis, permitindo insig
 
 ## 🔒 Segurança e Dados
 
-> **Nota:** Por se tratar de dados contábeis confidenciais, este repositório **não contém os dados reais nem o arquivo `.pbix` completo**. Foram disponibilizados apenas trechos de código M e fórmulas DAX genéricas para fins ilustrativos.
+> **Nota:** Por se tratar de dados contábeis confidenciais, este repositório **não contém os dados reais nem o arquivo `.pbix` completo**. Foram disponibilizados apenas trechos genéricos de código M, medidas e tabelas DAX para fins ilustrativos.
+
+---
 
 ## ⚙️ Pré-requisitos técnicos – Conexão com o sistema Domínio
 
-Para que o Power BI se conecte corretamente ao banco de dados via ODBC do sistema contábil **Domínio (Thomson Reuters)**, é necessário criar um **usuário externo com permissão de acesso à base de dados**.
+Para que o Power BI se conecte corretamente ao banco de dados via ODBC do sistema contábil **Domínio**, é necessário:
 
-O passo a passo completo pode ser encontrado neste artigo oficial da Domínio:
+1. Criar um **usuário externo** com permissões específicas  
+   🔗 [Tutorial oficial – Domínio](https://suporte.dominioatendimento.com/central/faces/solucao.html?codigo=3227)
 
-👉 [Como criar usuário externo no sistema Domínio](https://suporte.dominioatendimento.com/central/faces/solucao.html?codigo=3227)
+2. Configurar uma conexão ODBC no Windows  
+   🔗 [Tutorial ODBC no GitHub](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/docs/CONEXAO_ODBC.md)
 
-> Importante: este procedimento deve ser feito por um administrador do sistema Domínio, com atenção às permissões de acesso à base de dados utilizadas nas consultas.
+---
 
-Após a criação do usuário, é necessário fazer uma conexão ODBC com o banco de dados.
-Siga abaixo como fazer
-
-👉 [https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/CONEXAO_ODBC.md]
-
-
-
-## 📂 Estrutura deste repositório
-
+## 📂 Estrutura do Repositório
 Dashboard-Balancetes-Power-BI/
 ├── README.md
 ├── docs/
-│   ├── CONEXAO_ODBC.md
-│   ├── Código M
-│   └── medidas_dax.txt
+│ └── CONEXAO_ODBC.md
 ├── imagens/
-│   └── Exemplos.png
+│ ├── Exemplo 1.png
+│ └── Exemplo 2.png
+├── scripts_m/
+│ └── [códigos M de conexão, tratamento, transformação...]
+├── dax_measures/
+│ └── [medidas DAX exportadas]
+├── dax_tables/
+│ └── [tabelas calculadas DAX]
 
 
-## 📷 Capturas de tela
+---
 
-![Exemplo de visualização](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/Imagens/Exemplo%201.png)
-![Exemplo de visualização](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/Imagens/Exemplo%202.png)
+## 📷 Capturas de Tela
 
+| Visão Geral | Detalhamento de Contas |
+|-------------|------------------------|
+| ![Exemplo 1](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/imagens/Exemplo%201.png) | ![Exemplo 2](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/imagens/Exemplo%202.png) |
 
-## Códigos 
+---
 
-👉 [https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/tree/main/C%C3%B3digo%20M]
+## 📑 Códigos Disponíveis
 
+- 🔹 **Código M (Power Query):**  
+  [Ver scripts](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/tree/main/scripts_m)
 
+- 🔹 **Medidas DAX:**  
+  [Ver medidas](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/tree/main/dax_measures)
+
+- 🔹 **Tabelas DAX (calculadas):**  
+  [Ver tabelas](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/tree/main/dax_tables)
+
+---
 
 ## ✍️ Autor
 
-Aloyr Rezende – [LinkedIn](https://www.linkedin.com/in/aloyr-rezende)
-
-
+**Aloyr Rezende**  
+🔗 [LinkedIn](https://www.linkedin.com/in/aloyr-rezende)
 
