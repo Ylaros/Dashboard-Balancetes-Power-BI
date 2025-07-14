@@ -1,0 +1,10 @@
+let
+    Fonte = Odbc.DataSource("dsn=ContabilDB"),
+    Tabela = Fonte{[Name="""bethadba"".""geempre"""]}[Data],  
+    ColunasSelecionadas = Table.SelectColumns(Tabela, {"codi_emp", "razao_emp"}),
+    #"Índice Adicionado1" = Table.AddIndexColumn(ColunasSelecionadas, "Índice.1", 1, 1, Int64.Type),
+    #"Colunas Reordenadas" = Table.ReorderColumns(#"Índice Adicionado1",{"Índice.1", "codi_emp", "razao_emp"}),
+    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Reordenadas",{{"Índice.1", "Índice"}}),
+    #"Personalização Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "Desc. Completa", each Text.From([codi_emp])&" - "&[razao_emp])
+in
+    #"Personalização Adicionada"

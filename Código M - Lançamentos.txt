@@ -1,0 +1,35 @@
+let
+    Fonte = Odbc.DataSource("dsn=ContabilDB"),
+    Tabela = Fonte{[Name="""bethadba"".""ctlancto"""]}[Data],  
+    ColunasSelecionadas = Table.SelectColumns(Tabela, {"codi_emp", "codi_lote", "data_lan", "vlor_lan", "cdeb_lan", "ccre_lan", "codi_his", "chis_lan"}),
+    #"Linhas Classificadas" = Table.Sort(ColunasSelecionadas,{{"codi_emp", Order.Ascending}}),
+    #"Índice Adicionado" = Table.AddIndexColumn(#"Linhas Classificadas", "Índice", 1, 1, Int64.Type),
+    #"Colunas Reordenadas" = Table.ReorderColumns(#"Índice Adicionado",{"Índice", "codi_emp", "codi_lote", "data_lan", "vlor_lan", "cdeb_lan", "ccre_lan", "codi_his", "chis_lan"}),
+    #"Mês Inserido" = Table.AddColumn(#"Colunas Reordenadas", "Mês", each Date.Month([data_lan]), Int64.Type),
+    #"Ano Inserido" = Table.AddColumn(#"Mês Inserido", "Ano", each Date.Year([data_lan]), Int64.Type),
+    #"Personalização Adicionada" = Table.AddColumn(#"Ano Inserido", "Trismestre", each if [Mês] <= 3 then "Primeiro Trimestre" else if [Mês] <= 6 then "Segundo Trimestre" else if [Mês] <= 9 then "Terceiro Trimestre" else "Quarto Trimestre"),
+    #"Personalização Adicionada1" = Table.AddColumn(#"Personalização Adicionada", "ChaveEmpDeb", each Text.From([codi_emp]) & "-" & Text.From([cdeb_lan])),
+    #"Personalização Adicionada2" = Table.AddColumn(#"Personalização Adicionada1", "ChaveEmpCred", each Text.From([codi_emp]) & "-" & Text.From([ccre_lan])),
+    #"Personalização Adicionada3" = Table.AddColumn(#"Personalização Adicionada2", "MesExtenso", each Date.MonthName(#date(2024, [Mês], 1))),
+    #"Colocar Cada Palavra Em Maiúscula" = Table.TransformColumns(#"Personalização Adicionada3",{{"MesExtenso", Text.Proper, type text}}),
+    #"Personalização Adicionada4" = Table.AddColumn(#"Colocar Cada Palavra Em Maiúscula", "Personalizar", each Table.FromRows({
+    {[codi_emp], [cdeb_lan],  [vlor_lan]},
+    {[codi_emp], [ccre_lan], -[vlor_lan]}
+}, {"codi_emp", "conta", "vlor_lan"})),
+    #"Personalizar Expandido" = Table.ExpandTableColumn(#"Personalização Adicionada4", "Personalizar", {"codi_emp", "conta", "vlor_lan"}, {"Personalizar.codi_emp", "Personalizar.conta", "Personalizar.vlor_lan"}),
+    #"Colunas Reordenadas1" = Table.ReorderColumns(#"Personalizar Expandido",{"Índice", "codi_emp", "Personalizar.codi_emp", "codi_lote", "data_lan", "vlor_lan", "cdeb_lan", "ccre_lan", "codi_his", "chis_lan", "Mês", "Ano", "Trismestre", "ChaveEmpDeb", "ChaveEmpCred", "MesExtenso", "Personalizar.conta", "Personalizar.vlor_lan"}),
+    #"Colunas Removidas" = Table.RemoveColumns(#"Colunas Reordenadas1",{"codi_emp"}),
+    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Removidas",{{"Personalizar.codi_emp", "Codi_emp"}}),
+    #"Colunas Reordenadas2" = Table.ReorderColumns(#"Colunas Renomeadas",{"Índice", "Codi_emp", "codi_lote", "data_lan", "vlor_lan", "Personalizar.conta", "cdeb_lan", "ccre_lan", "codi_his", "chis_lan", "Mês", "Ano", "Trismestre", "ChaveEmpDeb", "ChaveEmpCred", "MesExtenso", "Personalizar.vlor_lan"}),
+    #"Colunas Renomeadas1" = Table.RenameColumns(#"Colunas Reordenadas2",{{"Personalizar.conta", "C.C."}}),
+    #"Colunas Removidas1" = Table.RemoveColumns(#"Colunas Renomeadas1",{"cdeb_lan", "ccre_lan", "vlor_lan"}),
+    #"Colunas Reordenadas3" = Table.ReorderColumns(#"Colunas Removidas1",{"Índice", "Codi_emp", "codi_lote", "data_lan", "Personalizar.vlor_lan", "C.C.", "codi_his", "chis_lan", "Mês", "Ano", "Trismestre", "ChaveEmpDeb", "ChaveEmpCred", "MesExtenso"}),
+    #"Colunas Renomeadas2" = Table.RenameColumns(#"Colunas Reordenadas3",{{"Personalizar.vlor_lan", "Valor"}}),
+    #"Colunas Removidas2" = Table.RemoveColumns(#"Colunas Renomeadas2",{"ChaveEmpDeb", "ChaveEmpCred"}),
+    #"Personalização Adicionada5" = Table.AddColumn(#"Colunas Removidas2", "Chave Conta", each Text.From([Codi_emp]) & "-" & Text.From([#"C.C."])),
+    #"Colunas Renomeadas3" = Table.RenameColumns(#"Personalização Adicionada5",{{"Chave Conta", "Chave_Conta"}}),
+    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas3",{{"Valor", Currency.Type}}),
+    #"Coluna Extra" = Table.AddColumn(#"Tipo Alterado", "Mês_Ano", each Text.From([Mês]) & "-" & Text.From([Ano])),
+    #"Colunas Renomeadas4" = Table.RenameColumns(#"Coluna Extra",{{"C.C.", "codi_cta"}})
+in
+    #"Colunas Renomeadas4"
