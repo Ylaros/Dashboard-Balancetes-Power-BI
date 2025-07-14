@@ -46,7 +46,7 @@ Dashboard-Balancetes-Power-BI/
 
 ## 📷 Capturas de tela
 
-![Exemplo de visualização](imagens/balancete-visao-geral.png)
+![Exemplo de visualização](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/Exemplo%201.png)
 
 ## ✍️ Autor
 
