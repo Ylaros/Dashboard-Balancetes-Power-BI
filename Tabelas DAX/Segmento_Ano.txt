@@ -1,0 +1,7 @@
+Segmento_Ano = 
+DISTINCT(
+    SELECTCOLUMNS(
+        FILTER(Calendario, Calendario[Ano_Visível] = 1),
+        "Ano", Calendario[Ano]
+    )
+)

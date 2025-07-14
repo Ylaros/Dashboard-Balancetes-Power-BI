@@ -1,0 +1,11 @@
+Segmento_AnoMes = 
+DISTINCT(
+    SELECTCOLUMNS(
+        FILTER(Calendario, Calendario[Mes_Visivel_Dinamico] = 1),
+        "Ano", Calendario[Ano],
+        "Mês", Calendario[Mês],
+        "Nome_Mês", Calendario[Nome_Mês],
+        "Ano_Mês", Calendario[Ano_Mês],
+        "Data", Calendario[Date]
+    )
+)

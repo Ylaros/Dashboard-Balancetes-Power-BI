@@ -1,0 +1,57 @@
+NiveisDisponiveis = 
+VAR EmpresaSelecionada = SELECTEDVALUE(ContasContabeis[codi_emp])
+RETURN
+DISTINCT (
+    UNION (
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel1_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel1_Nome],
+            "NivelOrdem", 1
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel2_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel2_Nome],
+            "NivelOrdem", 2
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel3_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel3_Nome],
+            "NivelOrdem", 3
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel4_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel4_Nome],
+            "NivelOrdem", 4
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel5_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel5_Nome],
+            "NivelOrdem", 5
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel6_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel6_Nome],
+            "NivelOrdem", 6
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel7_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel7_Nome],
+            "NivelOrdem", 7
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel8_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel8_Nome],
+            "NivelOrdem", 8
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel9_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel9_Nome],
+            "NivelOrdem", 9
+        ),
+        SELECTCOLUMNS(
+            FILTER(ContasContabeis, [Nivel10_Nome] <> BLANK() && [codi_emp] = EmpresaSelecionada),
+            "Nivel", [Nivel10_Nome],
+            "NivelOrdem", 10
+        )
+    )
+)

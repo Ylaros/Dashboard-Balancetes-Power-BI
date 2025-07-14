@@ -1,0 +1,8 @@
+Calendario = 
+ADDCOLUMNS(
+    CALENDAR(DATE(2018, 1, 1), DATE(2030, 12, 31)),
+    "Ano", YEAR([Date]),
+    "Mês", MONTH([Date]),
+    "Nome_Mês", FORMAT([Date], "mmmm"),
+    "Ano_Mês", FORMAT([Date], "YYYY-MM")
+)

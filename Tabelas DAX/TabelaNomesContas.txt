@@ -1,0 +1,6 @@
+TabelaNomesContas = 
+SELECTCOLUMNS(
+    DISTINCT(ContasContabeis),
+    "ChaveEmpCTA", ContasContabeis[ChaveEmpCTA],
+    "NomeConta", ContasContabeis[nome_cta]
+)

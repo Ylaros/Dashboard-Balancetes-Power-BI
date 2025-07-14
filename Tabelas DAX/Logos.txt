@@ -1,0 +1,8 @@
+Logos = DATATABLE(
+    "DescCompleta", STRING,
+    "ImagemURL", STRING,
+    {
+        {"541 - ITAGUARA COUNTRY CLUBE", "https://drive.google.com/uc?export=view&id=1o6E5abJ9DPSM6r0SetyEuLdVIvQEJpCC"}
+        -- adicione mais aqui conforme necessário
+    }
+)

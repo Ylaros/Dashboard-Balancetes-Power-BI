@@ -1,0 +1,31 @@
+HierarquiaContabil = 
+ADDCOLUMNS (
+    SUMMARIZE (
+        'Lançamentos',
+        'Lançamentos'[Chave_Conta],
+        'Lançamentos'[codi_emp]
+    ),
+    // Nomes dos níveis
+    "Nivel1_Nome", LOOKUPVALUE('ContasContabeis'[Nivel1_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel2_Nome", LOOKUPVALUE('ContasContabeis'[Nivel2_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel3_Nome", LOOKUPVALUE('ContasContabeis'[Nivel3_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel4_Nome", LOOKUPVALUE('ContasContabeis'[Nivel4_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel5_Nome", LOOKUPVALUE('ContasContabeis'[Nivel5_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel6_Nome", LOOKUPVALUE('ContasContabeis'[Nivel6_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel7_Nome", LOOKUPVALUE('ContasContabeis'[Nivel7_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel8_Nome", LOOKUPVALUE('ContasContabeis'[Nivel8_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel9_Nome", LOOKUPVALUE('ContasContabeis'[Nivel9_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel10_Nome", LOOKUPVALUE('ContasContabeis'[Nivel10_Nome], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+
+    // Códigos dos níveis
+    "Nivel1_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel1], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel2_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel2], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel3_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel3], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel4_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel4], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel5_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel5], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel6_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel6], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel7_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel7], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel8_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel8], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel9_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel9], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta]),
+    "Nivel10_Codigo", LOOKUPVALUE('ContasContabeis'[Nivel10], 'ContasContabeis'[ChaveEmpCTA], 'Lançamentos'[Chave_Conta])
+)
