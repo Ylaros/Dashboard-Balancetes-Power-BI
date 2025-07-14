@@ -34,21 +34,32 @@ O passo a passo completo pode ser encontrado neste artigo oficial da Domínio:
 
 > Importante: este procedimento deve ser feito por um administrador do sistema Domínio, com atenção às permissões de acesso à base de dados utilizadas nas consultas.
 
+Após a criação do usuário, é necessário fazer uma conexão ODBC com o banco de dados.
+Siga abaixo como fazer
+
+👉 [https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/CONEXAO_ODBC.md]
+
+
+
 ## 📂 Estrutura deste repositório
 
 Dashboard-Balancetes-Power-BI/
 ├── README.md
+├── docs/
+│   ├── CONEXAO_ODBC.md
+│   ├── powerquery_m_exemplo.txt
+│   └── medidas_dax.txt
 ├── imagens/
-│ └── balancete-visao-geral.png
-├── scripts/
-│ ├── power_query_m.txt
-│ └── medidas_dax.txt
+│   └── dashboard-balancete.png
+
 
 ## 📷 Capturas de tela
 
 ![Exemplo de visualização](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/Exemplo%201.png)
 ![Exemplo de visualização](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/Exemplo%202.png)
 ## ✍️ Autor
+
+
 
 Aloyr Rezende – [LinkedIn](https://www.linkedin.com/in/aloyr-rezende)
 
