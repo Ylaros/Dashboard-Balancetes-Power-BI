@@ -1,0 +1,63 @@
+let
+    Fonte = Odbc.DataSource("dsn=ContabilDB"),
+    Tabela = Fonte{[Name="""bethadba"".""ctcontas"""]}[Data],
+
+    // Colunas importantes
+    ColunasSelecionadas = Table.SelectColumns(Tabela, {"codi_emp", "codi_cta", "clas_cta", "nome_cta", "tipo_cta"}),
+
+    // Adiciona ContClass (nível de profundidade)
+    TabelaComNivel = Table.AddColumn(ColunasSelecionadas, "ContClass", each Text.Length(Text.From([clas_cta])), Int64.Type),
+
+    // Ordenação inicial
+    TabelaOrdenadaIni = Table.Sort(TabelaAgrupada, {
+        {"codi_emp", Order.Ascending},
+        {"clas_cta", Order.Ascending}
+    }),
+
+    // Gera prefixos da classificação
+    TabelaPrefixos = Table.AddColumn(TabelaComNivel, "Prefixos", each
+        let
+            texto = Text.From([clas_cta]),
+            tamanho = Text.Length(texto)
+        in
+            List.Transform({1..tamanho - 1}, each Text.Start(texto, _))
+    ),
+
+    // Expande os prefixos
+    TabelaExpandida = Table.ExpandListColumn(TabelaPrefixos, "Prefixos"),
+
+    // Junta com a própria tabela para encontrar o pai
+    TabelaReferenciaPais = Table.SelectColumns(TabelaComNivel, {"codi_emp", "clas_cta", "codi_cta"}),
+    TabelaRenomeada = Table.RenameColumns(TabelaReferenciaPais, {
+        {"clas_cta", "Prefixos"},
+        {"codi_cta", "ContaPai"}
+    }),
+
+    // Merge entre a conta e os possíveis pais
+    TabelaComMerge = Table.NestedJoin(
+        TabelaExpandida,
+        {"codi_emp", "Prefixos"},
+        TabelaRenomeada,
+        {"codi_emp", "Prefixos"},
+        "MatchPai",
+        JoinKind.LeftOuter
+    ),
+
+    // Expande os pais encontrados
+    TabelaExpandidaPai = Table.ExpandTableColumn(TabelaComMerge, "MatchPai", {"ContaPai"}),
+
+    // Agrupa por conta original e pega o pai com prefixo mais longo
+    TabelaAgrupada = Table.Group(TabelaExpandidaPai, {"codi_emp", "codi_cta", "clas_cta", "nome_cta", "tipo_cta", "ContClass"}, {
+        {"ContaPai", each List.Last(List.RemoveNulls([ContaPai])), type nullable text}
+    }),
+
+    // Ordenação final
+    TabelaOrdenada = Table.Sort(TabelaAgrupada, {
+        {"codi_emp", Order.Ascending},
+        {"clas_cta", Order.Ascending}
+    }),
+    #"Tipo Alterado" = Table.TransformColumnTypes(TabelaOrdenada,{{"ContaPai", Int64.Type}, {"codi_cta", Int64.Type}}),
+    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "ChaveEmpCTA", each Text.From([codi_emp]) & "-" & Text.From([codi_cta])),
+    #"Personalização Adicionada1" = Table.AddColumn(#"Personalização Adicionada", "ContaPaiChave", each if [ContaPai] <> null then Text.From([codi_emp]) & "-" & Text.From([ContaPai]) else null)
+in
+    #"Personalização Adicionada1"
