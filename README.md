@@ -47,7 +47,7 @@ Dashboard-Balancetes-Power-BI/
 ## 📷 Capturas de tela
 
 ![Exemplo de visualização](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/Exemplo%201.png)
-
+![Exemplo de visualização](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/Exemplo%202.png)
 ## ✍️ Autor
 
 Aloyr Rezende – [LinkedIn](https://www.linkedin.com/in/aloyr-rezende)
