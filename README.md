@@ -41,9 +41,8 @@ Para que o Power BI se conecte corretamente ao banco de dados via ODBC do sistem
 
 ## 📷 Capturas de Tela
 
-| Visão Geral | Detalhamento de Contas |
-|-------------|------------------------|
-| ![Exemplo 1](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/imagens/Exemplo%201.png) | ![Exemplo 2](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/imagens/Exemplo%202.png) |
+|[Exemplo 1](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/imagens/Exemplo%201.png) |
+|[Exemplo 2](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/blob/main/imagens/Exemplo%202.png) |
 
 ---
 
