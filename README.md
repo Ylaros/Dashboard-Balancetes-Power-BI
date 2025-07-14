@@ -39,24 +39,6 @@ Para que o Power BI se conecte corretamente ao banco de dados via ODBC do sistem
 
 ---
 
-## 📂 Estrutura do Repositório
-Dashboard-Balancetes-Power-BI/
-├── README.md
-├── docs/
-│ └── CONEXAO_ODBC.md
-├── imagens/
-│ ├── Exemplo 1.png
-│ └── Exemplo 2.png
-├── scripts_m/
-│ └── [códigos M de conexão, tratamento, transformação...]
-├── dax_measures/
-│ └── [medidas DAX exportadas]
-├── dax_tables/
-│ └── [tabelas calculadas DAX]
-
-
----
-
 ## 📷 Capturas de Tela
 
 | Visão Geral | Detalhamento de Contas |
