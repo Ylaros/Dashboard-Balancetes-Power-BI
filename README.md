@@ -30,6 +30,7 @@ Facilitar a visualização e análise de balancetes contábeis, permitindo insig
 Para que o Power BI se conecte corretamente ao banco de dados via ODBC do sistema contábil **Domínio (Thomson Reuters)**, é necessário criar um **usuário externo com permissão de acesso à base de dados**.
 
 O passo a passo completo pode ser encontrado neste artigo oficial da Domínio:
+
 👉 [Como criar usuário externo no sistema Domínio](https://suporte.dominioatendimento.com/central/faces/solucao.html?codigo=3227)
 
 > Importante: este procedimento deve ser feito por um administrador do sistema Domínio, com atenção às permissões de acesso à base de dados utilizadas nas consultas.
