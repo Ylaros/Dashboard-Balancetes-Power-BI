@@ -1,0 +1,9 @@
+VAR DataAtual = MAX('Calendario'[Date])
+RETURN
+CALCULATE(
+    SUM('Lançamentos'[Valor]),
+    FILTER(
+        ALLSELECTED('Calendario'[Date]),
+        'Calendario'[Date] <= DataAtual
+    )
+)

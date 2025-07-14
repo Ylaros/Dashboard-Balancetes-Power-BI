@@ -1,0 +1,25 @@
+VAR ContaAtual = SELECTEDVALUE('ContasContabeis'[ChaveEmpCTA])
+RETURN
+COALESCE(
+    CALCULATE(
+        SUM('Lançamentos'[Valor]),
+        FILTER(
+            ALL('Lançamentos'),
+            'Lançamentos'[Nivel1] = ContaAtual ||
+            'Lançamentos'[Nivel2] = ContaAtual ||
+            'Lançamentos'[Nivel3] = ContaAtual ||
+            'Lançamentos'[Nivel4] = ContaAtual ||
+            'Lançamentos'[Nivel5] = ContaAtual ||
+            'Lançamentos'[Nivel6] = ContaAtual ||
+            'Lançamentos'[Nivel7] = ContaAtual ||
+            'Lançamentos'[Nivel8] = ContaAtual ||
+            'Lançamentos'[Nivel9] = ContaAtual ||
+            'Lançamentos'[Nivel10] = ContaAtual
+        ),
+        FILTER(
+            ALL('Calendario'[Date]),
+            'Calendario'[Date] <= MAX('Calendario'[Date])
+        )
+    ),
+    0
+)

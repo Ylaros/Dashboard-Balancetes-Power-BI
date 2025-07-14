@@ -1,0 +1,4 @@
+CALCULATE(
+    SUM('Lançamentos'[Valor]),
+    'Lançamentos'[Chave_Conta] IN VALUES('HierarquiaContabil'[Chave_Conta])
+)

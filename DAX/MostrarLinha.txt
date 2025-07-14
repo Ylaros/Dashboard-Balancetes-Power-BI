@@ -1,0 +1,3 @@
+[Saldo Anterior]+
+[Saldo Atual]+
+[Débito]+[Crédito]

@@ -1,0 +1,29 @@
+VAR ContaAtual = SELECTEDVALUE('ContasContabeis'[ChaveEmpCTA])
+VAR DataInicial = EOMONTH(MAX('Calendario'[Date]), -1) + 1
+VAR DataFinal = EOMONTH(MAX('Calendario'[Date]), 0)
+RETURN
+COALESCE(
+    CALCULATE(
+        SUM('Lançamentos'[Valor]),
+        'Lançamentos'[Valor] < 0,
+        FILTER(
+            ALL('Lançamentos'),
+            'Lançamentos'[Nivel1] = ContaAtual ||
+            'Lançamentos'[Nivel2] = ContaAtual ||
+            'Lançamentos'[Nivel3] = ContaAtual ||
+            'Lançamentos'[Nivel4] = ContaAtual ||
+            'Lançamentos'[Nivel5] = ContaAtual ||
+            'Lançamentos'[Nivel6] = ContaAtual ||
+            'Lançamentos'[Nivel7] = ContaAtual ||
+            'Lançamentos'[Nivel8] = ContaAtual ||
+            'Lançamentos'[Nivel9] = ContaAtual ||
+            'Lançamentos'[Nivel10] = ContaAtual
+        ),
+        FILTER(
+            ALL('Calendario'[Date]),
+            'Calendario'[Date] >= DataInicial &&
+            'Calendario'[Date] <= DataFinal
+        )
+    ),
+    0
+)

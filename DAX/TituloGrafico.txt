@@ -1,0 +1,7 @@
+VAR AnoSelecionado = SELECTEDVALUE('Lançamentos'[Ano]) 
+RETURN 
+    IF(
+        ISBLANK(AnoSelecionado), 
+        "Análise por Ano", 
+        "Análise para o Ano " & AnoSelecionado
+    )
