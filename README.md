@@ -47,10 +47,10 @@ Dashboard-Balancetes-Power-BI/
 ├── README.md
 ├── docs/
 │   ├── CONEXAO_ODBC.md
-│   ├── powerquery_m_exemplo.txt
+│   ├── Código M
 │   └── medidas_dax.txt
 ├── imagens/
-│   └── dashboard-balancete.png
+│   └── Exemplos.png
 
 
 ## 📷 Capturas de tela
