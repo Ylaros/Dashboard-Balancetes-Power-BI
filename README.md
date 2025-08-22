@@ -57,6 +57,8 @@ Para que o Power BI se conecte corretamente ao banco de dados via ODBC do sistem
 - 🔹 **Tabelas DAX (calculadas):**  
   [Ver tabelas](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/tree/main/dax_tables)
 
+- 🔹 **Dashboad:**  
+  [Ver dashboard](https://github.com/Ylaros/Dashboard-Balancetes-Power-BI/tree/main/pbit)
 ---
 
 ## ✍️ Autor
